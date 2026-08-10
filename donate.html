@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate India - Donate Now</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h2>Donate India</h2>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="index.html">About</a>
+            <a href="donate.html">Donate</a>
+            <a href="index.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <h1>Make a Difference ❤️</h1>
+
+        <p>
+            Your support can help someone with food, education,
+            shelter and essential care.
+        </p>
+
+        <section>
+
+            <h2>Choose a Donation Cause</h2>
+
+            <div>
+                <h3>Help Children</h3>
+                <button>Donate for Children</button>
+            </div>
+
+            <div>
+                <h3>Help Elders</h3>
+                <button>Donate for Elders</button>
+            </div>
+
+            <div>
+                <h3>Assam Flood Relief</h3>
+                <button>Donate for Assam</button>
+            </div>
+
+            <div>
+                <h3>Help Stray Animals</h3>
+                <button>Donate for Animals</button>
+            </div>
+
+        </section>
+
+        <section>
+
+            <h2>Donation Amount</h2>
+
+<button onclick="selectAmount(100)">₹100</button>
+<button onclick="selectAmount(500)">₹500</button>
+<button onclick="selectAmount(1000)">₹1000</button>
+<button onclick="selectAmount(2000)">₹2000</button>
+
+<p id="selectedAmount">आपने अभी कोई amount नहीं चुना है।</p>
+
+<script>
+let selectedAmount = 0;
+
+function selectAmount(amount) {
+    selectedAmount = amount;
+
+    document.getElementById("selectedAmount").innerText =
+        "आपने ₹" + amount + " donation के लिए चुना है।";
+
+    document.getElementById("paymentAmount").innerText =
+        "Donation Amount: ₹" + amount;
+}
+
+function payNow() {
+    if (selectedAmount === 0) {
+        alert("Please select a donation amount first.");
+        return;
+    }
+
+    const upiId = "s801@pytes";
+
+    const upiLink =
+        "upi://pay?pa=" + encodeURIComponent(upiId) +
+        "&pn=Donate%20India" +
+        "&am=" + selectedAmount +
+        "&cu=INR";
+
+    window.location.href = upiLink;
+}
+</script>
+
+        </section>
+
+        <section>
+
+            <h2>UPI Donation</h2>
+
+            <p id="paymentAmount">Donation Amount: कोई amount select नहीं किया गया</p>
+            <p>UPI ID: s801@pytes</p>
+
+            <img src="images/donation-qr.jpg" alt="UPI QR Code">
+            <button onclick="payNow()">
+    Pay Now
+</button>
+
+        </section>
+
+<section>
+    <h2>Thank You for Your Support ❤️</h2>
+    <p>
+        Every contribution, big or small, can make a meaningful difference.
+    </p>
+</section>
+
+    </main>
+
+</body>
+
+</html>
